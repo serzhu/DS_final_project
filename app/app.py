@@ -38,7 +38,7 @@ def model_info(data, pred):
 
     fig = plt.figure(figsize=(15, 3))
     cm = confusion_matrix(target, pred)
-    sns.heatmap(cm, square=True, annot=True, fmt='d', cbar=False, cmap='coolwarm', vmin=0, vmax=100)
+    sns.heatmap(cm, square=True, annot=True, fmt='d', cbar=False, cmap='coolwarm', vmin=0, vmax=len(target)/2)
     plt.ylabel('Real')
     plt.xlabel('Predicted')
     st.pyplot(fig)
