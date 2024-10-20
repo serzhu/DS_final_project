@@ -1,6 +1,6 @@
 # DS_final_project
 ### Description:
-Application predicts potentialy lost client on data from the billing service.  
+Application predicts potentialy lost clients on data from the billing service.  
 Data shuld be in CSV format and contains next features:
 ```text
 'id' - client ID
@@ -26,9 +26,17 @@ docker run -p 8501:8501 lost-clients-prediction
 ### Open in browser:
 ### <http://localhost:8501>
 
-### Select test data in CSV format
-### Select model from avaliable models
-### Select scaler for current model
+### Select test data in CSV format:  
+test_data_100_clients.csv
+### Select model from avaliable models:  
+LR_model_Serhii.pkl  
+LSVC_model_Serhii.pkl  
+SVC_rbf_model_Serhii.pkl  
+RF_model_Serhii.pkl  
+NN_model_Serhii.pkl  
+### Select scaler for current model:  
+scaler_Serhii.pkl  
+NN_scaler_Serhii.pkl  
 
-App will return list of IDs potentially lost clients  
-List of clients can be downloaded in CSV format
+<b>App will return list of IDs potentially lost clients  
+<b>List of clients can be downloaded in CSV format
