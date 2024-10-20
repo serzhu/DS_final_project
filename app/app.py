@@ -13,9 +13,9 @@ BASE_DIR = Path(__file__).parent
 
 def prepare_data(df: DataFrame) -> DataFrame:
     if 'contract' not in df.columns:
-        df['contract'] = df['reamining_contract'].apply(lambda x: 0 if pd.isna(x) else 1)
+        df['contract'] = df['remaining_contract'].apply(lambda x: 0 if pd.isna(x) else 1)
         df.insert(5, 'contract', df.pop('contract'))
-        df['reamining_contract'] = df['reamining_contract'].fillna(0)
+        df['remaining_contract'] = df['remaining_contract'].fillna(0)
         df.dropna(subset=['download_avg', 'upload_avg'], inplace=True, ignore_index=True)
     return df
 
@@ -67,7 +67,8 @@ def main():
 
     if client_data and model_file and scaler_file:
         df = pd.read_csv(client_data)
-        ids = df[(df['reamining_contract'] >= 0) & (df['reamining_contract'] < 0.1) & (df['churn'] == 0)]['id'].to_list()
+        df.rename(columns = {'is_movie_package_subscriber':'is_vod_subscriber', 'reamining_contract':'remaining_contract'}, inplace = True)
+        ids = df[(df['remaining_contract'] >= 0) & (df['remaining_contract'] < 0.1) & (df['churn'] == 0)]['id'].to_list()
 
         model = joblib.load(model_file)
         scaler = joblib.load(scaler_file)
